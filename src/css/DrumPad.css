@@ -1,0 +1,50 @@
+#drum-pad {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 450px;
+}
+
+.drum-pad {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 0 1 32%;
+  height: 110px;
+  max-width: 110px;
+  margin-bottom: 2%;
+  border: .4rem solid black;
+  border-radius: .5rem;
+  margin: 1rem 1rem 2%;
+  font-size: 1.5rem;
+  padding: 1rem .5rem;
+  transition: all .07s ease;
+  text-align: center;
+  color: white;
+  background: rgba(0,0,0,0.6);
+  text-shadow: 0 0 .5rem black;
+}
+
+.drum-pad:hover {
+  cursor: pointer;
+}
+
+.playing {
+  transform: scale(1.1);
+  border-color: #ffc600;
+  box-shadow: 0 0 1rem #ffc600;
+}
+
+kbd {
+  font-size: 2rem;
+  background: none;
+}
+
+.label {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: .1rem;
+  color: #ffc600;
+}
+

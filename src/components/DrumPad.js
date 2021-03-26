@@ -5,10 +5,9 @@ const DrumPad = () => {
   return (
     <div id="drum-pad">
       {drumPads.map((drumpad) => (
-        <div key={drumpad.keyCode} className="drum-pad">
+        <div id={drumpad.sound} key={drumpad.keyCode} className="drum-pad" onClick={console.log(drumpad.sound)}>
           <kbd>{drumpad.key}</kbd>
-        <span>{drumpad.sound}</span>
-        <audio src={`./audio/${drumpad.sound}.wav`}></audio>
+          <audio src={`./audio/${drumpad.sound}.wav`} id={drumpad.key} className="clip"></audio>
       </div>
       ))}
     </div>       
