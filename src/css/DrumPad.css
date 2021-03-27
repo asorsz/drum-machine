@@ -15,7 +15,7 @@
   max-width: 110px;
   border: .4rem solid black;
   border-radius: .5rem;
-  margin: 1rem 1rem 2%;
+  margin: 1rem 1rem;
   font-size: 1.5rem;
   padding: 1rem .5rem;
   transition: all .07s ease;
@@ -38,12 +38,5 @@
 kbd {
   font-size: 2rem;
   background: none;
-}
-
-.label {
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: .1rem;
-  color: #ffc600;
 }
 
