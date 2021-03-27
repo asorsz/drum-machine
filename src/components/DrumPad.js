@@ -5,8 +5,6 @@ import drumPads from './drumpads';
 const DrumPad = () => {
 
   const playSound = (e) => { 
-    console.log(e)
-
     const audio = e.type === 'click'
       ? document.querySelector(`#${e.target.dataset.key}`)
       : document.querySelector(`#${e.key.toUpperCase()}`)
@@ -17,10 +15,19 @@ const DrumPad = () => {
     e.target.classList.add('playing');
   };
 
+  const removeTransition = (e) => {
+    if (e.propertyName !== 'transform') return;
+    e.target.classList.remove('playing');
+  }
+
   useEffect(() => {
+    const keys = document.querySelectorAll('.drum-pad');
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition));
     window.addEventListener('keydown', playSound);
     return () => {
       window.removeEventListener('keydown', playSound);
+      const keys = document.querySelectorAll('.drum-pad');
+      keys.forEach(key => key.removeEventListener('transitionend', removeTransition));
     };
   }, []);
 
