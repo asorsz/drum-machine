@@ -35,7 +35,7 @@ const DrumPad = (props) => {
       const keys = document.querySelectorAll('.drum-pad');
       keys.forEach(key => key.removeEventListener('transitionend', removeTransition));
     };
-  }, []);
+  });
 
  return (
     <div id="drum-pad" onKeyPress={(e) => playSound(e)}>
