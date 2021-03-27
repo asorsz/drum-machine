@@ -2,25 +2,23 @@ import { useEffect } from 'react';
 import '../css/DrumPad.css';
 import drumPads from './drumpads';
 
-const DrumPad = () => {
+const DrumPad = (props) => {
 
   const playSound = (e) => { 
-   
     
-    const audio = e.type === 'click'
-      ? document.querySelector(`#${e.target.dataset.key}`)
-      : document.querySelector(`#${e.key.toUpperCase()}`)
-        
-    if (!audio) return;
-    audio.currentTime = 0;
-    audio.play();
+    const key = e.type === 'click' ? e.target.dataset.key : e.key.toUpperCase();
+    
+    const audio = document.querySelector(`#${key}`);
+    const div = e.type === 'click' ? e.target : document.querySelector(`[data-key="${key}"]`);
+    const label = div.id;
 
-    if (e.type === 'click') {
-      e.target.classList.add('playing');  
-    } else {
-      document.querySelector(`[data-key="${e.key.toUpperCase()}"]`).classList.add('playing');
-    }
-    
+    if (!audio) return;
+  
+    props.setPlaying(label);
+    div.classList.add('playing');  
+      
+    audio.currentTime = 0;
+    audio.play();    
   };
 
   const removeTransition = (e) => {
