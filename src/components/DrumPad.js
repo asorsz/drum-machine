@@ -5,6 +5,8 @@ import drumPads from './drumpads';
 const DrumPad = () => {
 
   const playSound = (e) => { 
+   
+    
     const audio = e.type === 'click'
       ? document.querySelector(`#${e.target.dataset.key}`)
       : document.querySelector(`#${e.key.toUpperCase()}`)
@@ -12,7 +14,13 @@ const DrumPad = () => {
     if (!audio) return;
     audio.currentTime = 0;
     audio.play();
-    e.target.classList.add('playing');
+
+    if (e.type === 'click') {
+      e.target.classList.add('playing');  
+    } else {
+      document.querySelector(`[data-key="${e.key.toUpperCase()}"]`).classList.add('playing');
+    }
+    
   };
 
   const removeTransition = (e) => {
